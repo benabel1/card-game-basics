@@ -113,13 +113,13 @@ public class GamePlayerCircle {
 			currect.spendExtraTurn();
 		}
 				
-		if(direction == DIRECTION.CLOCKWISE) {
+		if(direction == DIRECTION.CLOCK_WISE) {
 			do {
 				moveLeft();
 			} while(!isPlay(nextPlayerMustBeAlive));
 		}
 		
-		if(direction == DIRECTION.CLOCKWISE) {
+		if(direction == DIRECTION.CLOCK_WISE) {
 			do {
 				moveRight();
 			} while(!isPlay(nextPlayerMustBeAlive));

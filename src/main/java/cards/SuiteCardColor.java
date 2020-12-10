@@ -26,9 +26,9 @@ public enum SuiteCardColor {
 	private String signUTF8;
 	private String stamp;
 	
-	private SuiteCardColor(String code, String sign, String stamp) {
+	private SuiteCardColor(String code, String signUTF8, String stamp) {
 		this.code = code;
-		this.signUTF8 = sign;
+		this.signUTF8 = signUTF8;
 		this.stamp = stamp;
 	}
 

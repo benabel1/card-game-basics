@@ -1,6 +1,7 @@
 package cards;
 
 public enum DIRECTION {
-	CLOCKWISE,
-	CONTERCLOCK
+	CLOCK_WISE,
+	//counterclockwise
+	COUNTER_CLOCK_WISE
 }

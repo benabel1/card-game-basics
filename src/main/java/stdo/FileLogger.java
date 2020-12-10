@@ -18,14 +18,14 @@ public class FileLogger {
 		return looger;
 	}
 
-	public static void log(Game game, String v) {
+	public static void log(Game game, String text) {
 		BufferedWriter writer = null;		
 		
 		synchronized (newInstance()) {
 			try {
 				writer = new BufferedWriter(new FileWriter(new File(game.getLogFile()), true));
 				
-				writer.append(v);
+				writer.append(text);
 				writer.newLine();
 				
 				writer.close();
@@ -48,14 +48,14 @@ public class FileLogger {
 	}
 	
 	//TODO
-	public static void logpp(Game game, String v) {
+	public static void logpp(Game game, String text) {
 		BufferedWriter writer = null;		
 		
 		synchronized (newInstance()) {
 			try {
 				writer = new BufferedWriter(new FileWriter(new File(game.getLogFile()), true));
 				
-				writer.append(v);
+				writer.append(text);
 				writer.newLine();
 				
 				writer.close();
