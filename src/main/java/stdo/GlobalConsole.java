@@ -134,7 +134,7 @@ public class GlobalConsole {
 		try {
 			for (Integer key : validOptions.getSortedKeys()) {
 				GamePlayerOption op = validOptions.getOption(key);
-				// System.out.print(op.getTextMessage());
+				System.out.print(op.getTextMessage());
 			}
 
 			String input = newInstance().readLine();

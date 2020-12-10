@@ -1,23 +1,33 @@
 package game;
 
+import data.PlayerValues;
+import enums.CommonValues;
+
 public class GamePlayer {
-	protected String playerNickname;
 	
-	protected int extraTurns;
+	protected String playerNickname;
+	protected PlayerValues playerValues;
 	
 	public GamePlayer(String string) {
 		this.playerNickname = string;
+		playerValues = new PlayerValues(this);
+		
+		playerValues.setInt(CommonValues.EXTRA_TURNS, 0);
 	}
 
 	public boolean hasExtraTurn() {
-		return this.extraTurns > 0;
+		return playerValues.getInt(CommonValues.EXTRA_TURNS) > 0;
 	}
 
 	public void spendExtraTurn() {
-		extraTurns--;
+		playerValues.decIntBy(CommonValues.EXTRA_TURNS, 1);
 	}
 
 	public boolean isPlayeing() {
 		return true;
+	}
+
+	public PlayerValues getPlayersValues() {
+			return playerValues;
 	}
 }

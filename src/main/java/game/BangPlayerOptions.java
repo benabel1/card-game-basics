@@ -17,27 +17,27 @@ public class BangPlayerOptions {
 
 	public static final String optionlevel = TAB._3;
 	
-	HashMap<Integer, GamePlayerOption> op;
+	HashMap<Integer, GamePlayerOption> options;
 
 	private GamePlayer whosOption;
 	
 	public BangPlayerOptions(GamePlayer player) {
-		this.op = new HashMap<Integer, GamePlayerOption>();
+		this.options = new HashMap<Integer, GamePlayerOption>();
 		this.whosOption = player;
 	}
 
 	public void addOption(int optionCount, GamePlayerOption operation) {
 //		System.out.format("Option was added %d %s\n", optionCount, operation.getTextMessage());
-		op.put(optionCount, operation);
+		options.put(optionCount, operation);
 	}
 
 	public GamePlayerOption getOption(int orderOfOption) {
-		return op.get(orderOfOption);
+		return options.get(orderOfOption);
 	}
 
 	@Deprecated
 	public void addOption(int optionCount, GamePlayerOption operation, String formatInput) {
-		op.put(optionCount, operation);
+		options.put(optionCount, operation);
 	}
 
 	public GamePlayer getPlayer() {
@@ -45,12 +45,12 @@ public class BangPlayerOptions {
 	}
 
 	public int count() {
-		return this.op.size();
+		return this.options.size();
 	}
 
 	public List<Integer> getSortedKeys() {
 		
-		List<Integer> sortedKeys = new ArrayList<Integer>(op.keySet());
+		List<Integer> sortedKeys = new ArrayList<Integer>(options.keySet());
 		Collections.sort(sortedKeys);
 		
 		return sortedKeys;
@@ -61,13 +61,13 @@ public class BangPlayerOptions {
 	 * @return
 	 */
 	public boolean containsOnlyQuitOption() {
-		return op.size() <= 1;
+		return options.size() <= 1;
 	}
 
 	public List<GamePlayerOption> getPlayerOption() {
 		List<GamePlayerOption> options = new ArrayList<GamePlayerOption>();
-		for (int i = 0; i < op.size(); i++) {
-			options.add(op.get(i));
+		for (int i = 0; i < options.size(); i++) {
+			options.add(options.get(i));
 		}
 		return options;
 	}

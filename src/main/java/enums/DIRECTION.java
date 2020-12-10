@@ -1,4 +1,4 @@
-package cards;
+package enums;
 
 public enum DIRECTION {
 	CLOCK_WISE,

@@ -6,12 +6,12 @@ import java.util.Random;
 
 import cards.CardGameInstance;
 
-public class DeckOfCards {
+public class DeckOfCards<T> {
 
-	List<CardGameInstance> listCards;
+	List<T> listCards;
 
 	public DeckOfCards() {
-		listCards = new ArrayList<CardGameInstance>();
+		listCards = new ArrayList<T>();
 	}
 
 	/**
@@ -19,7 +19,7 @@ public class DeckOfCards {
 	 * 
 	 * @param card
 	 */
-	public void insertCard(CardGameInstance card) {
+	public void insertCard(T card) {
 		if (getListCards() != null && card != null) {
 			getListCards().add(card);
 		}
@@ -36,14 +36,14 @@ public class DeckOfCards {
 	 * 
 	 * @return
 	 */
-	public CardGameInstance removeRandomCard() {
+	public T removeRandomCard() {
 
 		Random random = new Random();
 
 		if (isNotEmpty()) {
 			int randomInt = random.nextInt(getListCards().size());
 
-			CardGameInstance removedCard = getListCards().get(randomInt);
+			T removedCard = getListCards().get(randomInt);
 			getListCards().remove(randomInt);
 
 			return removedCard;
@@ -52,33 +52,33 @@ public class DeckOfCards {
 		}
 	}
 
-	public CardGameInstance giveTopCard() {
+	public T giveTopCard() {
 
 		if (getListCards().isEmpty()) {
 			return null;
 		} else {
-			CardGameInstance removedCard = getListCards().get(0);
+			T removedCard = getListCards().get(0);
 			getListCards().remove(0);
 
 			return removedCard;
 		}
 	}
 
-	public CardGameInstance giveBottom() {
+	public T giveBottom() {
 
 		if (getListCards().isEmpty()) {
 			return null;
 		} else {
-			CardGameInstance removedCard = getListCards().get(getListCards().size() - 1);
+			T removedCard = getListCards().get(getListCards().size() - 1);
 			getListCards().remove(getListCards().size() - 1);
 
 			return removedCard;
 		}
 	}
 
-	public List<CardGameInstance> getListCards() {
+	public List<T> getListCards() {
 		if (listCards == null) {
-			listCards = new ArrayList<CardGameInstance>();
+			listCards = new ArrayList<T>();
 		}
 		return listCards;
 	}
@@ -87,16 +87,16 @@ public class DeckOfCards {
 		listCards.clear();
 	}
 
-	public void shuffleAnotherDeckIntoThisAndThenClearDiscardDeck(DeckOfCards discardCardDeck) {
+	public void shuffleAnotherDeckIntoThisAndThenClearDiscardDeck(DeckOfCards<T> discardCardDeck) {
 		getListCards().addAll(discardCardDeck.getListCards());
 
 		discardCardDeck.clearDeck();
 	}
 
-	public void shuffleDeckIntoDeckWithoutClearAnotherOne(DeckOfCards discardCardDeck) {
+	public void shuffleDeckIntoDeckWithoutClearAnotherOne(DeckOfCards<T> discardCardDeck) {
 
 		while (discardCardDeck.isNotEmpty()) {
-			CardGameInstance randomCard = discardCardDeck.removeRandomCard();
+			T randomCard = discardCardDeck.removeRandomCard();
 			listCards.add(randomCard);
 		}
 	}
@@ -117,19 +117,19 @@ public class DeckOfCards {
 
 	}
 
-	public void putCardOnTop(CardGameInstance re) {
+	public void putCardOnTop(T re) {
 
 		if (re != null) {
 			listCards.add(0, re);
 		}
 	}
 
-	public CardGameInstance removeSpecificCard(Class<? extends CardGameInstance> classs) {
-		CardGameInstance removedCard = null;
+	public T removeSpecificCard(Class<? extends CardGameInstance> classs) {
+		T removedCard = null;
 
 		if (isNotEmpty()) {
 
-			for (CardGameInstance cardGameInstance : listCards) {
+			for (T cardGameInstance : listCards) {
 				if (cardGameInstance.getClass().equals(classs)) {
 					removedCard = cardGameInstance;
 				}

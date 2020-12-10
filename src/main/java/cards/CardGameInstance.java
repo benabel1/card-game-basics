@@ -1,6 +1,13 @@
 package cards;
 
 
+import java.util.List;
+
+import enums.CardGlobalPropertyOptions;
+import game.Game;
+import game.GamePlayer;
+import game.GamePlayerOption;
+import game.history.TimePoint;
 import stdo.TAB;
 
 
@@ -19,6 +26,17 @@ public class CardGameInstance {
 	protected String cardTextENG;
 	protected String cardTextSVK;
 	protected String cardTextCZE;
+	
+	protected String cardNameForBackSite;
+	protected String descriptionForBackSite;
+
+	protected String cardTextENGForBackSite;
+	protected String cardTextSVKForBackSite;
+	protected String cardTextCZEForBackSite;
+	
+	protected double cardValue;
+	
+	TimePoint lastPlayed;
 	
 	public static String getDefaultCode() {
 		return DEFAULT_CODE;
@@ -63,6 +81,25 @@ public class CardGameInstance {
 	public void setCardTextCZE(String cardTextCZE) {
 		this.cardTextCZE = cardTextCZE;
 	}
+
+	public boolean getBoolProperty(CardGlobalPropertyOptions playeonturn) {
+		if (playeonturn == null) {
+			return false;
+		}
+		
+		return CardProperties.getPropertyBool(getCardName(), playeonturn); 
+	}
 	
+	public void wasPlayed(Game game, GamePlayer byWhom) {}
+	
+	public void wasPlayed(Game game, GamePlayer byWhom, GamePlayerOption option) {}
+	
+	public void wasPlayed(Game game, GamePlayer byWhom, GamePlayer targeting) {}
+	
+	public void wasPlayed(Game game, GamePlayer byWhom, GamePlayer targeting, GamePlayerOption option) {}
+	
+	public void wasPlayed(Game game, GamePlayer byWhom, List<GamePlayer> affecting) {}
+	
+	public void wasPlayed(Game game, GamePlayer byWhom, List<GamePlayer> affecting, GamePlayerOption option) {}
 
 }
